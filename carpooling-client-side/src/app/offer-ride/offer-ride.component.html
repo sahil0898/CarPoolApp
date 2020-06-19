@@ -1,0 +1,117 @@
+<div class="col-md-12">
+    <header class="jumbotron">
+        <div style="text-align:center">
+    <h5>{{message}}</h5>
+          </div></header>
+    <div class="container">
+      <form
+        *ngIf="!isSuccessful && isLoggedin"
+        name="form"
+        (ngSubmit)="onSubmit()"
+        #f="ngForm"
+        novalidate
+      >
+        <div class="form-group">
+          <label for="source">Enter Source:</label>
+          <input
+            type="text"
+            class="form-control"
+            name="source"
+            [(ngModel)]="form.source"
+            required
+            minlength="3"
+            maxlength="20"
+            #username="ngModel"
+          /> </div>
+          <!-- <div class="alert-danger" *ngIf="f.submitted && username.invalid">
+            <div *ngIf="username.errors.required">Username is required</div>
+            <div *ngIf="username.errors.minlength">
+              Username must be at least 3 characters
+            </div>
+            <div *ngIf="username.errors.maxlength">
+              Username must be at most 20 characters
+            </div> 
+          </div>
+        </div> -->
+        <div class="form-group">
+          <label for="destination">Enter Destination:</label>
+          <input
+            type="text"
+            class="form-control"
+            name="destination"
+            [(ngModel)]="form.destination"
+            required
+            email
+            #email="ngModel"
+          /> </div>
+          <!-- <div class="alert-danger" *ngIf="f.submitted && email.invalid">
+            <div *ngIf="email.errors.required">Email is required</div>
+            <div *ngIf="email.errors.email">
+              Email must be a valid email address
+            </div>
+          </div>
+        </div> -->
+        <div class="form-group">
+          <label for="rideDate">Enter Ride-Date</label>
+          <input
+            type="text"
+            class="form-control"
+            name="rideDate"
+            [(ngModel)]="form.rideDate"
+            placeholder="dd-mm-yyyy"
+            required
+            minlength="6"
+            #password="ngModel"
+          /> </div>
+
+          <!-- <div class="alert-danger" *ngIf="f.submitted && password.invalid">
+            <div *ngIf="password.errors.required">Password is required</div>
+            <div *ngIf="password.errors.minlength">
+              Password must be at least 6 characters
+            </div>
+          </div>
+        </div> -->
+        <div class="form-group">
+            <label for="vacency">Number of seats offed: </label>
+            <input
+              type="number"
+              class="form-control"
+              name="vacency"
+              [(ngModel)]="form.vacency"
+              required/>
+        </div>
+
+              <div class="form-group">
+                <label for="costPerSeat">Amount per passenger:</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  name="costPerSeat"
+                  [(ngModel)]="form.costPerSeat"
+                  required/>
+              </div>
+
+              <div class="form-group">
+                <label for="carName">Car Model:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="carName"
+                  [(ngModel)]="form.carName"
+                  required/>
+              </div>
+        <div class="form-group">
+          <button class="btn btn-primary btn-block">Register</button>
+        </div>
+  
+        <!-- <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+          Signup failed!<br />{{ errorMessage }}
+        </div> -->
+      </form>
+  
+      <div class="alert alert-success" *ngIf="isSuccessful && isLoggedin">
+        Your registration is successful!
+      </div>
+    </div>
+  </div>
+  

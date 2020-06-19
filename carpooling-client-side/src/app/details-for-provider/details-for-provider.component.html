@@ -1,0 +1,41 @@
+<h2>
+    Details of all the passenger:
+</h2>
+<br>
+<div class="card">
+    <div class="card-head">
+        <br>
+        <div class="row">
+            <div class="col-sm-4">&nbsp;Source:<strong> {{parameter.source}}</strong></div>
+            <div class="col-sm-4">Destination:<strong>{{parameter.destination}}</strong> </div>
+            <div class="col-sm-4">Date of Journey: <strong>{{parameter.rideDate}}</strong></div>
+            <br>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;Amount to be received from each passenger:<strong> {{parameter.costPerSeat}}
+            </strong></p>
+        </div>     
+    </div>
+</div>
+<br>
+<div *ngIf=detailsList> 
+<h4><strong> Passenger Details:</strong></h4>
+<table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">Full Name</th>
+      <th scope="col">Email Id</th>
+      <th scope="col">Mobile Number</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let details of detailsList">
+            <td>{{details.fullName}}</td>
+            <td>{{details.email}}</td>
+            <td>{{details.mobileNumber}}</td>
+        </tr>
+
+    </tbody>
+</table>
+</div>
+<div *ngIf="!detailsList" style="text-align: center;">
+    <h4>No passengers has booked this ride Yet!!</h4>
+</div>

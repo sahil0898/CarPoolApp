@@ -1,0 +1,73 @@
+
+<header class="jumbotron">
+    <div style="text-align:center">
+        <h4>Your Upcoming Rides</h4>
+    </div>
+</header>
+<div *ngIf="!isDeleteSuccessfull">
+<hr>
+<div>  <!-- </div>*ngIf="myRidesList"> -->
+    <strong> Your Ride As A Driver: </strong>
+    <div> <!-- *ngIf="myRidesList"> -->
+        <div class="card" *ngFor="let myRide of myRidesList">
+            <div *ngIf= "myRide.role | checkRole : 'driver'" class="card-body">
+            <div class="row"> 
+                <div class="col-sm-3">Source: <b>{{myRide.source}}</b></div> 
+                <div class="col-sm-3">Destination: <b>{{myRide.destination}} </b></div>
+                <div class="col-sm-3">Date: <b>{{myRide.rideDate}} </b></div>
+                <div class="col-sm-3">Car model: <b>{{myRide.carName}} </b></div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-1">
+                   <a [routerLink]="['/passengerdetails']" [queryParams]="{rideId: myRide.rideId,
+                        source: myRide.source,destination: myRide.destination, rideDate: myRide.rideDate,
+                        costPerSeat:myRide.costPerSeat}" class="btn btn-primary">Details</a>
+                </div> 
+                <div class="col-sm-1"></div>
+                <div class="col-sm-1">
+                    <div class="btn btn-danger" (click)="deleteDriverAndPassenger(myRide.rideId)">
+                     Delete</div>
+                     </div>
+                     <hr>
+            </div>
+            </div>
+        </div>
+        <hr>
+    </div> 
+    </div>
+    <br><hr>
+
+<div>   <!-- *ngIf="myRidesList"> -->
+<strong> Your Ride As A passenger: </strong>
+<div>  <!-- *ngIf="myRidesList"> -->
+    <div class="card" *ngFor="let myRide of myRidesList">
+        <div *ngIf= "myRide.role | checkRole : 'passenger'" class="card-body">
+        <div class="row"> 
+            <div class="col-sm-3">Source: <b>{{myRide.source}}</b></div> 
+            <div class="col-sm-3">Destination: <b>{{myRide.destination}} </b></div>
+            <div class="col-sm-3">Date: <b>{{myRide.rideDate}} </b></div>
+            <div class="col-sm-3">Car model: <b>{{myRide.carName}} </b></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-1">
+                <a [routerLink]="['/ridedetails']" [queryParams]="{rideId: myRide.rideId,offerBy: myRide.offeredBy,isBooked:null}" 
+                class="btn btn-primary" >Details</a>
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-1">
+                <div class="btn btn-danger" (click)="deletePassenger(myRide.id,myRide.rideId);"> Delete</div>
+                </div>
+        </div>
+        </div>
+    </div>
+    <hr>
+</div> 
+</div> 
+</div>
+<div *ngIf="isDeleteSuccessfull"    class="alert alert-success" style="text-align:center;">
+        <h4>Ride Delete successfully!!</h4>
+</div>

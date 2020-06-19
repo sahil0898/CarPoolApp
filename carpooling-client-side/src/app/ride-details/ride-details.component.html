@@ -1,0 +1,55 @@
+<div *ngIf="!isSuccessfull">
+    <h2> Details of the pool.</h2>
+    <br>
+    <div *ngIf=rideDetails>
+        <h4>Details of the provider:</h4>
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <td> Provider Name:</td>
+                    <td><strong>{{rideDetails.name}}</strong></td>
+                </tr>
+                <tr>
+                    <td>Email address of provider:</td>
+                    <td><strong>{{rideDetails.emailAddress}}</strong></td>
+                </tr>
+                <tr>
+                    <td>Provider Mobile number:</td>
+                    <td><strong>{{rideDetails.mobileNumber}}</strong></td>
+                </tr>
+                <tr>
+                    <td><h5>Pool details:</h5></td>
+                </tr>
+                <tr>
+                    <td>Source:</td>
+                    <td><strong>{{rideDetails.source}}</strong></td>
+                </tr>
+                <tr>
+                    <td>Destination:</td>
+                    <td><strong>{{rideDetails.destination}}</strong></td>
+                </tr>
+                <tr>
+                    <td>Ride Date:</td>
+                    <td><strong>{{rideDetails.rideDate}}</strong></td>
+                </tr>
+                <tr>
+                    <td>Number of Passenger booked:</td>
+                    <td><strong>{{rideDetails.count}}</strong></td>
+                </tr>
+                <tr>
+                    <td>Number of seats still Vacent:</td>
+                    <td><strong>{{rideDetails.vacency}}</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>     
+    <div *ngIf="isBooked">
+        <br>
+        <div class="btn btn-primary btn-lg btn-block" (click)="bookARide()"> Book </div>
+        <br>
+    </div>  
+</div>
+<div class="alert alert-success" *ngIf="isSuccessfull" style="text-align:center;">
+    <h4>Ride Booked successfully!!</h4>
+    click on Your Rides to see your Upcoming Rides...
+</div>
